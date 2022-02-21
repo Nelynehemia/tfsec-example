@@ -1,4 +1,4 @@
 ---
 exclude:
-  aws-ec2-enable-at-rest-encryption: HIGH
-  aws-ec2-enforce-http-token-imds: HIGH
+  - aws-ec2-enable-at-rest-encryption: HIGH
+  - aws-ec2-enforce-http-token-imds: HIGH
