@@ -26,22 +26,6 @@ resource "aws_instance" "example_vm" {
 
   instance_type = "t2.micro"
 
-  metadata_options {
-    http_tokens = "required"
-  }
-
-   root_block_device {
-      encrypted = true
-  }
-
-  ebs_block_device {
-    device_name = "/dev/sdg"
-    volume_size = 5
-    volume_type = "gp2"
-    delete_on_termination = false
-    encrypted = true
-  }
-
   tags = {
     Name = "cloudify-public-${var.env_name}-vm"
   }
@@ -57,22 +41,6 @@ resource "aws_instance" "example_vm" {
   subnet_id = module.vpc.subnet_id
 
   user_data =   data.template_file.template.rendered
-}
-
-resource "aws_cloudtrail" "good_example" {
-  is_multi_region_trail = true
-  enable_log_file_validation = true
-  kms_key_id = var.kms_id
-
-  event_selector {
-    read_write_type           = "All"
-    include_management_events = true
-
-    data_resource {
-      type = "AWS::S3::Object"
-      values = ["${data.aws_s3_bucket.important-bucket.arn}/"]
-    }
-  }
 }
 
 resource "aws_eip" "eip" {
