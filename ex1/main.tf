@@ -58,12 +58,6 @@ resource "aws_instance" "example_vm" {
   # we specified
   ami = lookup(var.aws_amis, var.aws_region)
 
-  # Our Security group to allow HTTP and SSH access
-  vpc_security_group_ids = module.vpc.group_ids
-
-  # Connect to subnet
-  subnet_id = module.vpc.subnet_id
-
   user_data =   data.template_file.template.rendered
 }
 
@@ -78,7 +72,6 @@ resource "aws_cloudtrail" "good_example" {
 
     data_resource {
       type = "AWS::S3::Object"
-      values = ["${data.aws_s3_bucket.important-bucket.arn}/"]
     }
   }
 }
