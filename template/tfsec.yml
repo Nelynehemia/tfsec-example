@@ -1,2 +1,5 @@
 exclude:
-  - CUS002
+  - aws-vpc-add-description-to-security-group-rule
+  - aws-vpc-no-public-egress-sgr
+  - aws-vpc-no-public-ingress-sgr
+  -
