@@ -1,6 +1,0 @@
-exclude:
-  - aws-ec2-enable-at-rest-encryption
-  - aws-ec2-enforce-http-token-imds
-  - aws-vpc-add-description-to-security-group-rule
-  - aws-vpc-no-public-egress-sgr
-  - aws-vpc-no-public-ingress-sgr
